@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/springblog?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Jakarta&useSSL=false
+    username: postgres
+    password: postgres
+  jpa:
+    generate-ddl: true
+    properties:
+        hibernate:
+            ddl-auto: update
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+    show_sql: true
+  messages:
+    basename: base
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username:
+    password: 
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+            required: true
+          auth: true
+          connectionTimeout: 30000
+          timeout: 30000
+          protocol: smtp
+          test-connection: false

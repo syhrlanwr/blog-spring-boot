@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    
+<head th:replace="fragments/layout :: head"> </head>
+
+<body class="flex flex-col h-screen justify-between bg-gray-100 antialiased leading-none font-sans">
+    <div th:replace="fragments/layout :: navbar"></div>
+    <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
+        <div class="flex">
+            <div class="w-full">
+                <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+                    <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                        Daftar
+                    </header>
+
+                    <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" th:action="@{/signup}"
+                        th:object="${user}">
+                        <div class="flex flex-wrap mt-8">
+                            <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                First Name :
+                            </label>
+
+                            <input id="firstName" type="text"
+                                class="form-input w-full border-b-2 border-gray-300 focus:border-blue-300 outline-none"
+                                th:error="*{firstName}" th:field="*{firstName}" th:errorClass="border-red-500" required
+                                autocomplete="firstName" autofocus />
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                Last Name :
+                            </label>
+
+                            <input id="lastName" type="text"
+                                class="form-input w-full border-b-2 border-gray-300 focus:border-blue-300 outline-none"
+                                th:error="*{lastName}" th:field="*{lastName}" th:errorClass="border-red-500" required
+                                autocomplete="lastName" autofocus />
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                Email :
+                            </label>
+
+                            <input id="email" type="email"
+                                class="form-input w-full border-b-2 border-gray-300 focus:border-blue-300 outline-none"
+                                th:error="*{email}" th:field="*{email}" th:errorClass="border-red-500" required
+                                autocomplete="email" autofocus />
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                                Password :
+                            </label>
+
+                            <input id="password" type="password"
+                                class="form-input w-full border-b-2 border-gray-300 focus:border-blue-300 outline-none"
+                                th:error="*{password}" th:field="*{password}" th:errorClass="border-red-500" required
+                                autocomplete="password" autofocus />
+                        </div>
+
+                        <div class="flex flex-wrap">
+                            <button type="submit"
+                                class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
+                                Daftar
+                            </button>
+
+                            <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
+                                Sudah punya akun?
+                                <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="/login">
+                                    Login
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+    
+<head th:replace="fragments/layout :: head"> </head>
+
+<body class="flex flex-col h-screen justify-between bg-gray-100 antialiased leading-none font-sans">
+    <div th:replace="fragments/layout :: navbar"></div>
+    <div class="w-4/6 m-auto text-left py-5">
+        <div class="py-3">
+            <h1 class="title-font text-3xl font-semibold uppercase text-gray-900 mb-1">
+                [[${post.title}]]
+            </h1>
+        </div>
+        <h2 class="tracking-widest text-lg title-font font-medium text-gray-500 mb-1">Diposting
+            oleh
+            <span class="font-bold text-gray-600">[[${post.user.firstName}]] [[${post.user.lastName}]] |</span>
+            <span class="text-gray-500">[[${#dates.format(post.createdAt, 'dd-MM-yyyy')}]]</span>
+        </h2>
+        <div class="py-5">
+            <img th:src="@{${'/images/' + post.imgPath}}" class="object-cover md:h-96 w-full pt-8"
+                alt="{{ $post->image_path }}">
+        </div>
+        <div class="text-xl leading-relaxed mb-3" th:utext="${post.content}">
+
+        </div>
+    </div>
+
+
+    <footer th:replace="fragments/layout :: footer"></footer>
+</body>
+
+</html>
